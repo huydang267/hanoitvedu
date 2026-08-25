@@ -1,0 +1,60 @@
+OVERVIEW
+
+NOTEBOOK
+
+LEARN
+
+NOTEBOOK
+
+FORUM
+
+PROMPT - LEARNING
+Your go-to collection of ready-to-use prompts for common Admin, Editor and Content tasks.
+
+PROMPT LIBRARY
+
+EDITORIAL
+“I need to research [TOPIC] for
+[PURPOSE]. Generate 5 key research
+questions, relevant search keywords
+for each question, and identify 3
+important pieces of information I
+may still need to verify.”
+View prompt
+
+?
+
+PRACTICE
+
+WHY PROMPT
+LIBRARY?
+
+ADMIN
+
+ADMIN
+
+“Analyse this document and extract
+the key information, summarise the
+main points, and organise the
+information into relevant categories.
+Do not add information that is not
+included in the document.”
+View prompt
+
+CONTENT
+
+CONTENT
+
+“I need to create content about
+[TOPIC] for [AUDIENCE] on
+[PLATFORM]. Suggest 5 content
+ideas with different angles, then
+create a simple content plan for
+the best idea.”
+View prompt
+
+The Prompt Library gives employees ready-to-use prompts for common Admin, Editor and
+Content tasks, so they do not have to start from scratch every time. It helps them use AI more
+effectively, save time and apply proven prompts directly to their daily work.
+
+

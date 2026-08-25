@@ -1,0 +1,42 @@
+                           OVERVIEW                   LEARN          PRACTICE              NOTEBOOK                     FORUM
+
+
+
+  COMMON MISTAKES WHEN USING AI FOR PLANNING
+                                                                                                AI doesn’t know who your readers are, or what your
+                                                              1
+                                                                  Accepting AI’s first set of   newsroom has already published on the topic. Always
+                                                                  questions without editing     review the question list and drop anything already
+                                                                                                answered or irrelevant to your angle.
+
+
+                                                                                                A solid research plan usually needs 2-3 rounds with AI:
+                                                              2
+                                                                  Stopping after one round      ask → review results → ask again to dig deeper or narrow
+                                                                  of Q&A                        scope. Don’t treat the first answer as the final plan.
+
+
+                                                                                                “Hanoi electric bus” will surface thousands of results
+                                                              3
+                                                                  Using overly generic          not specifically about the new route. The more specific
+                                                                  keywords                      (route name, timeframe, agency name), the more
+                                                                                                reliable the search results.
+
+
+                                                                                                This is the most common and riskiest mistake — it leads
+                                                              4
+                                                                  Skipping the gap-check        to publishing stories missing key information that a
+                                                                  step due to time pressure     single question could have caught early.
+
+
+     TIP FOR EDITORIAL TEAMS                                      Confusing “AI asks good       AI is good at suggesting what to ask, but not reliable
+Avoid these mistakes to make AI a reliable                    5   questions” with “AI gives     when it answers those questions itself. Keep these two
+                                                                                                things clearly separated in your workflow.
+partner in your editorial planning process, not a                 correct answers”
+shortcut that leads to incomplete or risky stories.
+
+
+                                                        KEY IDEA            Use AI to ask smarter questions, not to replace critical thinking.
+
+          KEY IDEA
+

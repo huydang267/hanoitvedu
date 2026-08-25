@@ -1,0 +1,65 @@
+OVERVIEW
+
+LEARN
+
+PRACTICE
+
+NOTEBOOK
+
+FORUM
+
+START WITH THE TOPIC
+
+01
+
+First, tell AI what you're trying to do.
+Don't just give AI a topic. Give it topic + purpose, so it understands what kind of research you need. A breaking-news brief, an investigative feature,
+or an in-depth analysis will need very different questions even for the same topic.
+
+EXAMPLE
+
+✕ INSTEAD OF:
+
+Topic: Hanoi's new electric
+bus route
+
++
+
+“Tell me about Hanoi's new
+electric bus.”
+
+✓ TRY:
+
++ “I need to research Hanoi's new
+
+electric bus route for a news article.”
+
+Purpose: Preparing a news
+article
+
+A SECOND EXAMPLE: SAME TOPIC, DIFFERENT PURPOSE, DIFFERENT RESULT:
+PURPOSE
+
+TYPE OF QUESTIONS AI WILL PRIORITIZE
+
+Breaking news
+
+Who, what, when: core facts needed immediately
+
+In-depth analysis Why, who benefits, long-term impact, comparison with similar cases
+Interview piece
+
+Open-ended questions to draw out perspective, contradictions to clarify with the source
+
+Infographic
+
+Standout figures, easy-to-visualize facts, timeline
+
+TIP FOR EDITORIAL TEAMS
+If the piece has a tight deadline, say so in the
+prompt (“300-word brief, due in 1 hour”).
+
+KEY IDEA
+Clear purpose → More relevant research
+
+

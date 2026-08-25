@@ -1,0 +1,409 @@
+{
+  "_README": "VERBATIM CONTENT — every string below is copied character-for-character from content/source/page-NN.txt, which is pdftotext output of HRD A2.pdf. Do not rewrite, shorten, fix grammar or change punctuation. Run tools/verify_content.py after any edit.",
+
+  "site": {
+    "name": "HaNoiTVEdu",
+    "wordmark": "HANOITVEDU",
+    "tagline": "LEARN AI. SHARPEN YOUR STORY",
+    "logo_caption": "HanoiTV"
+  },
+
+  "nav": [
+    { "key": "overview", "label": "OVERVIEW", "endpoint": "overview.home" },
+    { "key": "learn", "label": "LEARN", "endpoint": "learn.index" },
+    { "key": "practice", "label": "PRACTICE", "endpoint": "practice.index" },
+    { "key": "notebook", "label": "NOTEBOOK", "endpoint": "notebook.index" },
+    { "key": "forum", "label": "FORUM", "endpoint": "forum.index" }
+  ],
+
+  "pages": {
+    "home": {
+      "source": "page-01",
+      "active_nav": "overview",
+      "live_badge_label": "Live",
+      "heading": "HANOITVEDU",
+      "subheading": "LEARN AI. SHARPEN YOUR STORY",
+      "cards": [
+        { "label": "ABOUT US", "endpoint": "overview.about", "accent": "yellow" },
+        { "label": "OUR PROGRAM", "endpoint": "overview.program", "accent": "green" },
+        { "label": "OUR BLOGS", "endpoint": "overview.blogs", "accent": "yellow" },
+        { "label": "YOUR INFO", "endpoint": "overview.profile", "accent": "green" }
+      ]
+    },
+
+    "about": {
+      "source": "page-02",
+      "active_nav": "overview",
+      "heading": "ABOUT US",
+      "body_box": {
+        "accent": "green",
+        "paragraphs": [
+          "HaNoiTVEdu is a workplace learning platform designed to help Hanoi TV employees build practical AI skills for their everyday work.",
+          "We focus on role-based, hands-on learning for Editorial, Admin and Content teams — helping employees understand when to use AI, which tools fit different tasks, and how to use them responsibly.",
+          "Through short learning modules, practical exercises, AI tool guidance and peer sharing, HaNoiTVEdu turns AI from a new technology into a practical work skill."
+        ]
+      },
+      "callout": { "accent": "yellow", "text": "LEARN AI. SHARPEN YOUR STORY" }
+    },
+
+    "program": {
+      "source": "page-03",
+      "active_nav": "overview",
+      "heading": "OUR PROGRAM",
+      "roles": [
+        { "slug": "editorial", "label": "EDITORIAL", "accent": "yellow" },
+        { "slug": "admin", "label": "ADMIN", "accent": "green" },
+        { "slug": "content", "label": "CONTENT", "accent": "yellow" }
+      ]
+    },
+
+    "role_editorial": {
+      "source": "page-04",
+      "active_nav": "overview",
+      "heading": "EDITORIAL",
+      "skills": [
+        { "label": "RESEARCH, VERIFICATION INFORMATION", "module": "ai-research-planning", "accent": "yellow" },
+        { "label": "MULTIMEDIA PACKAGING", "module": null, "accent": "yellow" },
+        { "label": "PUBLISHING & DISTRIBUTION", "module": null, "accent": "yellow" },
+        { "label": "MODERATION & MONITORING", "module": null, "accent": "yellow" }
+      ]
+    },
+
+    "notebook": {
+      "source": "page-15",
+      "active_nav": "notebook",
+      "tab_label": "NOTEBOOK",
+      "sidebar_label": "PROMPT LIBRARY",
+      "heading": "PROMPT - LEARNING",
+      "lead": "Your go-to collection of ready-to-use prompts for common Admin, Editor and Content tasks.",
+      "cards": [
+        {
+          "title": "EDITORIAL",
+          "accent": "red",
+          "prompt": "“I need to research [TOPIC] for [PURPOSE]. Generate 5 key research questions, relevant search keywords for each question, and identify 3 important pieces of information I may still need to verify.”",
+          "action": "View prompt"
+        },
+        {
+          "title": "ADMIN",
+          "accent": "blue",
+          "prompt": "“Analyse this document and extract the key information, summarise the main points, and organise the information into relevant categories. Do not add information that is not included in the document.”",
+          "action": "View prompt"
+        },
+        {
+          "title": "CONTENT",
+          "accent": "green",
+          "prompt": "“I need to create content about [TOPIC] for [AUDIENCE] on [PLATFORM]. Suggest 5 content ideas with different angles, then create a simple content plan for the best idea.”",
+          "action": "View prompt"
+        }
+      ],
+      "why": {
+        "title": "WHY PROMPT LIBRARY?",
+        "text": "The Prompt Library gives employees ready-to-use prompts for common Admin, Editor and Content tasks, so they do not have to start from scratch every time. It helps them use AI more effectively, save time and apply proven prompts directly to their daily work."
+      }
+    },
+
+    "forum": {
+      "source": "page-16",
+      "active_nav": "forum",
+      "tab_label": "AI WORK FORUM",
+      "heading": "AI WORK FORUM",
+      "lead": "Share AI tips, ask questions and learn from colleagues’ real experiences.",
+      "new_post_label": "+ New Post",
+      "channels_label": "CHANNELS",
+      "channels": ["# General", "# Editorial", "# Content", "# Admin", "# Tools & Prompts", "# Announcements"],
+      "online_label": "PEOPLE ONLINE (14)",
+      "online": [
+        { "name": "Editor Minh", "accent": "red" },
+        { "name": "Content Lan", "accent": "green" },
+        { "name": "Admin Hùng", "accent": "blue" }
+      ],
+      "online_overflow": "+10",
+      "composer_placeholder": "Write a message...",
+      "reply_label": "Reply",
+      "seed_posts": [
+        { "author": "Editor Minh", "accent": "red", "when": "Today", "likes": 12, "body": "Mọi người ơi, research một chủ đề dài thì mọi người hay dùng Gemini hay ChatGPT vậy? Mình thử Gemini thấy tìm background nhanh hơn." },
+        { "author": "Content Lan", "accent": "green", "when": "Today", "likes": 8, "body": "T đang thử dùng ChatGPT để biến 1 bài news thành caption + TikTok script. Có prompt nào để nó không tự thêm fact không nhỉ?" },
+        { "author": "Admin Hùng", "accent": "blue", "when": "Today", "likes": 10, "body": "Mọi người có cách nào dùng AI để tóm tắt meeting notes thành task + deadline + người phụ trách không? Đọc lại từng file lâu quá" },
+        { "author": "Editor Minh", "accent": "red", "when": "Today", "likes": 9, "body": "T vừa thử Claude với một đống tài liệu dài, khá ổn. Nhưng mọi người nhớ check lại source nhé, AI vẫn có thể miss information." },
+        { "author": "Content Lan", "accent": "green", "when": "Today", "likes": 7, "body": "Có ai dùng Grok để tìm content angle chưa? T đang thử từ một news story → 5 góc content khác nhau, khá tiện." },
+        { "author": "Admin Hùng", "accent": "blue", "when": "Today", "likes": 15, "body": "Reminder nha: tài liệu nội bộ/sensitive thì đừng upload lên public AI tools. T vừa được trainer nhắc vụ này." }
+      ]
+    }
+  },
+
+  "modules": {
+    "ai-research-planning": {
+      "source": "page-05",
+      "eyebrow": "MODULE 1: AI",
+      "title": "RESEARCH PLANNING",
+      "subtitle": "Turn a broad topic into a clear research plan",
+      "overview": {
+        "label": "OVERVIEW",
+        "accent": "green",
+        "text": "Research becomes time-consuming when you start searching without knowing exactly what you need to find. AI can help you plan your research first by turning one broad topic into focused questions, useful search keywords and information gaps."
+      },
+      "what_you_will_learn": {
+        "label": "WHAT YOU WILL LEARN",
+        "accent": "yellow",
+        "items": [
+          "Research Questions - Break a broad topic into clear questions you need to answer.",
+          "Search Keywords - Turn those questions into specific terms for more focused searching.",
+          "Information Gaps - Identify what you still need to find or verify.",
+          "Research Structure - Organise your research before spending time searching."
+        ]
+      },
+      "lessons": [
+        {
+          "slug": "01",
+          "source": "page-06",
+          "number": "01",
+          "title": "START WITH THE TOPIC",
+          "lead": { "accent": "yellow", "title": "First, tell AI what you're trying to do.", "text": "Don't just give AI a topic. Give it topic + purpose, so it understands what kind of research you need. A breaking-news brief, an investigative feature, or an in-depth analysis will need very different questions even for the same topic." },
+          "blocks": [
+            { "type": "example_pair", "label": "EXAMPLE", "accent": "blue",
+              "items": [
+                { "label": "Topic", "text": "Hanoi's new electric bus route" },
+                { "label": "Purpose", "text": "Preparing a news article" }
+              ] },
+            { "type": "prompt_compare",
+              "bad": { "label": "✕ INSTEAD OF:", "text": "“Tell me about Hanoi's new electric bus.”" },
+              "good": { "label": "✓ TRY:", "text": "“I need to research Hanoi's new electric bus route for a news article.”" } },
+            { "type": "table", "caption": "A SECOND EXAMPLE: SAME TOPIC, DIFFERENT PURPOSE, DIFFERENT RESULT:",
+              "columns": ["PURPOSE", "TYPE OF QUESTIONS AI WILL PRIORITIZE"],
+              "rows": [
+                { "accent": "red", "cells": ["Breaking news", "Who, what, when: core facts needed immediately"] },
+                { "accent": "green", "cells": ["In-depth analysis", "Why, who benefits, long-term impact, comparison with similar cases"] },
+                { "accent": "yellow", "cells": ["Interview piece", "Open-ended questions to draw out perspective, contradictions to clarify with the source"] },
+                { "accent": "blue", "cells": ["Infographic", "Standout figures, easy-to-visualize facts, timeline"] }
+              ] }
+          ],
+          "tip": { "label": "TIP FOR EDITORIAL TEAMS", "text": "If the piece has a tight deadline, say so in the prompt (“300-word brief, due in 1 hour”)." },
+          "key_idea": { "label": "KEY IDEA", "text": "Clear purpose → More relevant research" }
+        },
+
+        {
+          "slug": "02",
+          "source": "page-07",
+          "number": "02",
+          "title": "BUILD RESEARCH QUESTIONS",
+          "lead": { "accent": "yellow", "title": "Turn one broad topic into specific questions.", "text": "" },
+          "blocks": [
+            { "type": "prompt", "label": "Ask AI:", "text": "“Generate 5 key questions I should investigate about Hanoi’s new electric bus route.”" },
+            { "type": "list_panel", "title": "AI CAN HELP YOU IDENTIFY:",
+              "rows": [
+                { "accent": "blue", "term": "WHEN?", "text": "When will it launch?" },
+                { "accent": "green", "term": "WHERE?", "text": "Which areas will it connect?" },
+                { "accent": "yellow", "term": "WHO?", "text": "Who is responsible for operating and funding it?" },
+                { "accent": "red", "term": "WHAT?", "text": "What are the operating hours and frequency?" },
+                { "accent": "purple", "term": "WHY?", "text": "Why is the route being introduced now?" }
+              ] },
+            { "type": "note", "accent": "blue", "text": "Instead of searching randomly, you now have a clear list of what you need to find out." }
+          ],
+          "tip": { "label": "TIP FOR EDITORIAL TEAMS", "text": "For time-sensitive news, ask AI to rank the questions by priority (which need answering before publishing, which can be added later). This keeps you from burning your time budget on secondary details." },
+          "key_idea": { "label": "KEY IDEA", "text": "Broad topic → Focused questions" }
+        },
+
+        {
+          "slug": "03",
+          "source": "page-08",
+          "number": "03",
+          "title": "CREATE SEARCH KEYWORDS",
+          "lead": { "accent": "yellow", "title": "Turn questions into searchable terms.", "text": "Your research question tells you what you need to know. Search keywords help you find that information." },
+          "blocks": [
+            { "type": "prompt", "label": "Ask AI:", "text": "“Generate 3-5 specific search keywords for each research question.\"" },
+            { "type": "question_to_keywords",
+              "question_label": "QUESTION:",
+              "question": "When will the route launch?",
+              "keywords_label": "KEYWORDS:",
+              "keywords": [
+                "Hanoi electric bus launch date",
+                "Hanoi electric bus official announcement",
+                "Hanoi electric bus September 2026"
+              ] },
+            { "type": "note", "accent": "blue", "text": "You can adjust keywords based on the sources and information you find along the way.\nThis is a loop, not a one-time step." },
+            { "type": "lang_badges", "decor": ["VIE", "ENG"] }
+          ],
+          "tip": { "label": "TIP FOR EDITORIAL TEAMS", "text": "Try keywords in both Vietnamese and English if the topic has an international angle (e.g., foreign sponsors, imported technology), and favor keywords with proper nouns, numbers, and specific dates. They filter out much more accurate results than generic terms." },
+          "key_idea": { "label": "KEY IDEA", "text": "Better keywords → More focused search" }
+        },
+
+        {
+          "slug": "04",
+          "source": "page-09",
+          "number": "04",
+          "title": "IDENTIFY INFORMATION GAPS",
+          "lead": { "accent": "yellow", "title": "Before finalizing your plan, ask: \"What am I missing?\"", "text": "" },
+          "blocks": [
+            { "type": "prompt", "label": "Give your research questions to AI and ask:", "text": "\"What important information might still be missing from this research plan?\"" },
+            { "type": "status_table", "title": "FOR EXAMPLE:",
+              "rows": [
+                { "state": "known", "label": "We know:", "text": "Launch date" },
+                { "state": "known", "label": "We know:", "text": "Route" },
+                { "state": "missing", "label": "Missing:", "text": "Ticket price" },
+                { "state": "missing", "label": "Missing:", "text": "Exact stops" },
+                { "state": "missing", "label": "Missing:", "text": "Official confirmation from authorities" }
+              ] },
+            { "type": "side_note", "title": "NEXT TO-DO LIST", "accent": "purple", "text": "These gaps become your next to-do list — what to search for or verify further." }
+          ],
+          "tip": { "label": "TIP FOR EDITORIAL TEAMS", "text": "This step is often skipped under deadline pressure, but it is crucial for avoiding under-verified stories. Make it mandatory before a piece goes to edit." },
+          "key_idea": { "label": "KEY IDEA", "text": "Good research finds answers. Great research finds what's missing." }
+        },
+
+        {
+          "slug": "mistakes",
+          "source": "page-10",
+          "number": null,
+          "title": "COMMON MISTAKES WHEN USING AI FOR PLANNING",
+          "lead": null,
+          "blocks": [
+            { "type": "numbered_rows",
+              "rows": [
+                { "n": "1", "accent": "red", "title": "Accepting AI’s first set of questions without editing", "text": "AI doesn’t know who your readers are, or what your newsroom has already published on the topic. Always review the question list and drop anything already answered or irrelevant to your angle." },
+                { "n": "2", "accent": "blue", "title": "Stopping after one round of Q&A", "text": "A solid research plan usually needs 2-3 rounds with AI: ask → review results → ask again to dig deeper or narrow scope. Don’t treat the first answer as the final plan." },
+                { "n": "3", "accent": "green", "title": "Using overly generic keywords", "text": "“Hanoi electric bus” will surface thousands of results not specifically about the new route. The more specific (route name, timeframe, agency name), the more reliable the search results." },
+                { "n": "4", "accent": "yellow", "title": "Skipping the gap-check step due to time pressure", "text": "This is the most common and riskiest mistake — it leads to publishing stories missing key information that a single question could have caught early." },
+                { "n": "5", "accent": "purple", "title": "Confusing “AI asks good questions” with “AI gives correct answers”", "text": "AI is good at suggesting what to ask, but not reliable when it answers those questions itself. Keep these two things clearly separated in your workflow." }
+              ] }
+          ],
+          "tip": { "label": "TIP FOR EDITORIAL TEAMS", "text": "Avoid these mistakes to make AI a reliable partner in your editorial planning process, not a shortcut that leads to incomplete or risky stories." },
+          "key_idea": { "label": "KEY IDEA", "text": "Use AI to ask smarter questions, not to replace critical thinking." }
+        },
+
+        {
+          "slug": "05",
+          "source": "page-11",
+          "number": "05",
+          "title": "THE AI RESEARCH FLOW",
+          "lead": { "accent": "yellow", "title": "Use AI before you start searching", "text": "" },
+          "blocks": [
+            { "type": "flow_steps",
+              "steps": [
+                { "n": "01", "accent": "blue", "label": "DEFINE", "text": "What am I researching?" },
+                { "n": "02", "accent": "green", "label": "QUESTION", "text": "What do I need to find out?" },
+                { "n": "03", "accent": "yellow", "label": "SEARCH", "text": "What keywords should I use?" },
+                { "n": "04", "accent": "purple", "label": "GAP CHECK", "text": "What information am I still missing?" }
+              ] },
+            { "type": "note", "accent": "blue", "text": "This gives you a clear research direction before you dive into browsing dozens of sources: saving time and reducing the risk of missing important details." },
+            { "type": "important_panel", "label": "IMPORTANT:",
+              "title": "AI IS YOUR ASSISTANT, NOT A REPLACEMENT",
+              "text": "AI can help you plan and structure research, but it does not replace actual research.",
+              "warn_label": "AI may give you:",
+              "warnings": ["Incorrect information", "Outdated information", "Missing important context"],
+              "chain": "AI plans → You search → You verify",
+              "note": "For editorial work, the human remains responsible for checking sources and deciding what can be used.",
+              "emphasis": "AI should never be cited as a source itself. It’s a thinking tool to use before real research begins." }
+          ],
+          "tip": null,
+          "key_idea": { "label": "KEY IDEA", "text": "AI plans → You search → You verify" }
+        },
+
+        {
+          "slug": "06",
+          "source": "page-12",
+          "number": "06",
+          "title": "QUICK CHECKLIST FOR EDITORIAL TEAMS",
+          "lead": null,
+          "blocks": [
+            { "type": "checklist", "title": "Before moving from \"planning\" to \"actually searching,\" make sure:",
+              "items": [
+                "You've stated the topic + purpose clearly (piece type, length, target audience)",
+                "You have at least 5 research questions, with duplicates or already-known answers removed",
+                "Each question has 2–3 specific search keywords attached",
+                "You've asked AI about information gaps and noted at least 3 items",
+                "You've clearly separated assumptions still needing verification from facts with an official source",
+                "Nothing in the plan is treated as \"verified\" simply because AI produced it"
+              ] },
+            { "type": "skill_unlocked", "accent": "green",
+              "label": "SKILL UNLOCKED:",
+              "title": "AI RESEARCH PLANNING",
+              "banner": "You can now use AI to:",
+              "chain": ["DEFINE", "QUESTION", "SEARCH", "IDENTIFY GAPS"],
+              "text": "You've learned how to turn a broad topic into a structured research plan before spending time searching." },
+            { "type": "warning", "accent": "red", "text": "If any item on this list isn't done yet, don't start writing - go back to the relevant step." },
+            { "type": "next_up", "accent": "blue",
+              "title": "NEXT: 02 · SEARCH - AI-Assisted Search",
+              "text": "Learn how to use AI to find relevant sources while keeping the original source and evidence at the center of your research." }
+          ],
+          "tip": null,
+          "key_idea": null
+        }
+      ],
+
+      "practice": {
+        "slug": "practice",
+        "source": "page-13",
+        "number": "07",
+        "title": "QUICK PRACTICE",
+        "lead": { "accent": "yellow", "title": "Take a few minutes now - the better your plan, the easier your research.", "text": "" },
+        "your_turn": {
+          "label": "YOUR TURN",
+          "accent": "purple",
+          "intro": "Choose one topic from your current work. Ask AI to:",
+          "steps": ["Generate 5 research questions", "Suggest search keywords", "Identify 3 information gaps"],
+          "fallback": {
+            "title": "DON'T HAVE A TOPIC YET? TRY ONE OF THESE:",
+            "items": [
+              "A new policy or regulation about to take effect",
+              "A local event or festival coming up in your area",
+              "A tech or consumer trend currently being discussed",
+              "A person or business about to be featured in the news"
+            ]
+          }
+        },
+        "copy_prompt": {
+          "label": "COPY THIS PROMPT:",
+          "accent": "blue",
+          "text": "\"I need to research [TOPIC] for [PURPOSE]. Generate 5 key research questions, relevant search keywords for each question, and identify 3 important pieces of information I may still need to verify.\""
+        },
+        "follow_up": {
+          "label": "FOLLOW-UP PROMPT",
+          "accent": "green",
+          "hint": "(use after you get the first results):",
+          "text": "\"Of these 5 questions, which is most important if I only have 1 hour to research? Rank them by priority and briefly explain why.\""
+        },
+        "submit": { "label": "COMPLETE → SUBMIT", "text": "Finish your practice and submit.", "accent": "yellow" }
+      },
+
+      "quiz": {
+        "slug": "quiz",
+        "source": "page-14",
+        "number": "07",
+        "title": "QUICK CHECK",
+        "banner": "Before you unlock the next skill...",
+        "questions": [
+          {
+            "id": "Q1.",
+            "text": "What should you do before searching for information?",
+            "options": [
+              { "key": "A", "text": "Ask AI to write the whole article" },
+              { "key": "B", "text": "Define what you need to find" },
+              { "key": "C", "text": "Copy the topic into ChatGPT" }
+            ],
+            "answer": "B"
+          },
+          {
+            "id": "Q2.",
+            "text": "What is the purpose of research questions?",
+            "options": [
+              { "key": "A", "text": "To make the article longer" },
+              { "key": "B", "text": "To identify what information you need to investigate" },
+              { "key": "C", "text": "To replace fact-checking" }
+            ],
+            "answer": "B"
+          },
+          {
+            "id": "Q3.",
+            "text": "Can AI-generated research questions be treated as verified information?",
+            "options": [
+              { "key": "A", "text": "Yes" },
+              { "key": "B", "text": "Only if AI sounds confident" },
+              { "key": "C", "text": "No - they are a starting point for research" }
+            ],
+            "answer": "C"
+          }
+        ],
+        "footer": { "label": "KEEP GOING!", "text": "Good research starts with a plan. Answering these questions correctly means you're ready to unlock the next skill!" }
+      }
+    }
+  }
+}

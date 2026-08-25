@@ -1,0 +1,104 @@
+OVERVIEW
+
+AI WORK
+FORUM
+
+LEARN
+
+PRACTICE
+
+NOTEBOOK
+
+FORUM
+
+AI WORK FORUM
+
++ New Post
+
+Share AI tips, ask questions and learn from colleagues’ real experiences.
+
+CHANNELS
+Editor Minh
+
+# General
+
+Today
+
+Mọi người ơi, research một chủ đề dài thì mọi người hay dùng Gemini hay ChatGPT
+vậy? Mình thử Gemini thấy tìm background nhanh hơn.
+
+# Editorial
+
+Content Lan
+
+# Content
+
+T đang thử dùng ChatGPT để biến 1 bài news thành caption + TikTok script. Có
+prompt nào để nó không tự thêm fact không nhỉ?
+
+# Admin
+# Tools & Prompts
+# Announcements
+
+PEOPLE ONLINE (14)
+Editor Minh
+Content Lan
+Admin Hùng
+
++10
+
+Admin Hùng
+
+😭
+
+Mọi người có cách nào dùng AI để tóm tắt meeting notes thành task + deadline +
+người phụ trách không? Đọc lại từng file lâu quá
+
+Editor Minh
+
+T vừa thử Claude với một đống tài liệu dài, khá ổn. Nhưng mọi người nhớ check lại
+source nhé, AI vẫn có thể miss information.
+
+Content Lan
+
+Có ai dùng Grok để tìm content angle chưa? T đang thử từ một news story → 5 góc
+content khác nhau, khá tiện.
+
+Admin Hùng
+
+Reminder nha: tài liệu nội bộ/sensitive thì đừng upload lên public AI tools. T vừa
+được trainer nhắc vụ này.
+
+Write a message...
+
+♡ 12
+♡8
+
+Reply
+
+Today
+
+Reply
+Today
+
+♡ 10
+♡9
+♡7
+
+Reply
+
+Today
+
+Reply
+Today
+
+Reply
+Today
+
+♡ 15
+
+Reply
+
+→
+
+

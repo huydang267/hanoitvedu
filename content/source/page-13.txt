@@ -1,0 +1,30 @@
+                      OVERVIEW                      LEARN            PRACTICE           NOTEBOOK                          FORUM
+
+
+
+07         QUICK PRACTICE                                           Take a few minutes now - the better
+                                                                    your plan, the easier your research.
+
+      YOUR TURN
+                                                                                COPY THIS PROMPT:
+     Choose one topic from your current work. Ask AI to:
+                                                                                 "I need to research [TOPIC] for [PURPOSE]. Generate 5
+      1      Generate 5 research questions                                       key research questions, relevant search keywords for
+                                                                                 each question, and identify 3 important pieces of
+                                                                                 information I may still need to verify."
+      2      Suggest search keywords
+
+
+
+      3      Identify 3 information gaps                                         FOLLOW-UP PROMPT
+                                                                                 (use after you get the first results):
+
+          DON'T HAVE A TOPIC YET? TRY ONE OF THESE:
+                                                                                  "Of these 5 questions, which is most important if I only have 1 hour
+          • A new policy or regulation about to take effect                       to research? Rank them by priority and briefly explain why."
+
+          • A local event or festival coming up in your area
+          • A tech or consumer trend currently being discussed
+          • A person or business about to be featured in the news
+                                                                                COMPLETE → SUBMIT                    Finish your practice and submit.
+
