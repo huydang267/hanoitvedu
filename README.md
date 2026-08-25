@@ -49,22 +49,60 @@ pipeline and the verbatim rule.
 
 ## Deploy
 
-```bash
-export SECRET_KEY="$(python -c 'import secrets; print(secrets.token_urlsafe(48))')"
-export FLASK_ENV=production
-export DATABASE_URL=...        # optional; defaults to SQLite in instance/
-gunicorn "app:create_app()" -b 0.0.0.0:8000
-```
+Verified on Python 3.10 and 3.14 with the pinned `requirements.txt`; `.python-version`
+asks build packs for 3.12.
 
-A `Procfile` is included for platforms that read one:
+### Any platform
+
+Two environment variables, one process command.
+
+| Variable | Value |
+|---|---|
+| `SECRET_KEY` | **required** — `python -c "import secrets; print(secrets.token_urlsafe(48))"` |
+| `FLASK_ENV` | `production` |
+| `DATABASE_URL` | optional; defaults to SQLite in `instance/` |
 
 ```
 web: gunicorn "app:create_app()" -b 0.0.0.0:$PORT
 ```
 
+That line is already in the `Procfile`. To run it by hand:
+
+```bash
+export SECRET_KEY="$(python -c 'import secrets; print(secrets.token_urlsafe(48))')"
+export FLASK_ENV=production
+gunicorn "app:create_app()" -b 0.0.0.0:8000
+```
+
 `ProdConfig` refuses to start on the development secret, disables debug, sets
 `SESSION_COOKIE_SECURE` / `HTTPONLY` / `SAMESITE=Lax`, and serves static assets with a
 one-year `Cache-Control`. `GET /healthz` returns `200 ok` for load-balancer probes.
+
+### Serve it over HTTPS
+
+`ProdConfig` marks the session cookie `Secure`, so browsers will not store it over plain
+HTTP. Without the session there is no CSRF token, and **every forum post and quiz
+submission returns 400**. Managed platforms terminate TLS for you and this is a non-issue;
+on a bare VPS, put the app behind nginx or Caddy with a certificate before going live.
+
+### What happens to the database
+
+The forum and quiz tables live in `instance/hanoitvedu.sqlite`. Most platforms give a
+container an ephemeral filesystem, so on every deploy and restart:
+
+- posts and quiz attempts written by visitors are lost;
+- the forum reseeds itself from `content/content.json`, so the six sample posts always
+  come back and the page is never empty.
+
+For a demo or a review link that is fine. To keep what visitors write, either attach a
+persistent disk and point `DATABASE_URL` at a file on it:
+
+```
+DATABASE_URL=sqlite:////data/hanoitvedu.sqlite     # note the four slashes: absolute path
+```
+
+or move to Postgres — `config.py` already rewrites a `postgres://` URL to `postgresql://`,
+but the driver is not installed, so add `psycopg[binary]` to `requirements.txt` first.
 
 ## Layout
 
