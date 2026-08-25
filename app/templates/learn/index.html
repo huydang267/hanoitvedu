@@ -1,0 +1,25 @@
+{# LEARN index — the nav needs a landing point for the section.
+   Every string comes from the module's own header in content.json. #}
+{% extends "base.html" %}
+{% import "macros/icons.html" as ic %}
+{% block title %}{{ nav_items()[1].label }} · {{ site().name }}{% endblock %}
+
+{% block content %}
+<div class="page">
+  <header class="page__header">
+    <h1 class="page__title">{{ nav_items()[1].label }}</h1>
+  </header>
+  {{ ic.palette_marks() }}
+
+  <nav class="grid-3" aria-label="{{ nav_items()[1].label }}">
+    {% for slug, module in modules %}
+    <a class="entry-card" data-accent="yellow"
+       href="{{ url_for('learn.module', module=slug) }}">
+      <span class="entry-card__icon">{{ ic.icon_folder("red", 34) }}</span>
+      <span>{{ module.eyebrow }}</span>
+      <span>{{ module.title }}</span>
+    </a>
+    {% endfor %}
+  </nav>
+</div>
+{% endblock %}

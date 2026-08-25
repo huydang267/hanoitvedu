@@ -1,0 +1,32 @@
+{# Screen 1 — landing hero + 4 entry cards #}
+{% extends "base.html" %}
+{% import "macros/icons.html" as ic %}
+{% block title %}{{ page.heading }} · {{ site().name }}{% endblock %}
+
+{% block content %}
+<div class="page">
+  <section class="hero">
+    <img class="hero__logo"
+         src="{{ url_for('static', filename='image/logo.png') }}"
+         alt="{{ site().logo_caption }}">
+    <h1 class="hero__wordmark">{{ page.heading }}</h1>
+    <p class="hero__tagline">{{ page.subheading }}</p>
+  </section>
+
+  <nav class="grid-4" aria-label="{{ page.heading }}">
+    {% for card in page.cards %}
+    <a class="entry-card" data-accent="{{ card.accent }}"
+       href="{{ url_for(card.endpoint) }}">
+      <span class="entry-card__icon">
+        {% if loop.index0 == 0 %}{{ ic.icon_person("blue", 34) }}
+        {% elif loop.index0 == 1 %}{{ ic.icon_folder("red", 34) }}
+        {% elif loop.index0 == 2 %}{{ ic.icon_idea("blue", 34) }}
+        {% else %}{{ ic.icon_key("red", 34) }}
+        {% endif %}
+      </span>
+      {{ card.label }}
+    </a>
+    {% endfor %}
+  </nav>
+</div>
+{% endblock %}

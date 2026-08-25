@@ -1,0 +1,71 @@
+{# base.html — the page shell: background layers, navbar, LIVE badge, card.
+   Structural strings here (aria-labels, <title>) belong to the code. Every
+   sentence a visitor reads comes from content.json. #}
+
+{% import "macros/icons.html" as ic %}
+{% set nav = nav_items() %}
+{% set brand = site() %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ brand.name }}{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700;800&family=Poppins:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/tokens.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='image/logo.png') }}">
+</head>
+<body>
+  <div class="bg-field" aria-hidden="true"></div>
+  <div class="bg-bars" aria-hidden="true">
+    <span class="bg-bars__bar bg-bars__bar--blue"></span>
+    <span class="bg-bars__bar bg-bars__bar--red"></span>
+  </div>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="navbar">
+    <nav class="navbar__pill" aria-label="Primary">
+      <a class="navbar__brand" href="{{ url_for('overview.home') }}">
+        <img class="navbar__logo"
+             src="{{ url_for('static', filename='image/logo.png') }}"
+             alt="{{ brand.logo_caption }}">
+      </a>
+
+      <ul class="navbar__links" id="nav-links">
+        {% for item in nav %}
+        <li>
+          <a class="navbar__link{% if active_nav == item.key %} navbar__link--active{% endif %}"
+             href="{{ url_for(item.endpoint) }}"
+             {% if active_nav == item.key %}aria-current="page"{% endif %}>{{ item.label }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <div class="navbar__tools">
+        <button class="navbar__icon-btn navbar__toggle" type="button"
+                id="nav-toggle" aria-controls="nav-links" aria-expanded="false"
+                aria-label="Toggle navigation">{{ ic.icon_menu() }}</button>
+        <a class="navbar__icon-btn" href="{{ url_for('overview.profile') }}"
+           aria-label="Your account">{{ ic.icon_user() }}</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="card" id="main">
+    {{ ic.live_badge(live_badge_label) }}
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <p>{{ brand.wordmark }}</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+</body>
+</html>

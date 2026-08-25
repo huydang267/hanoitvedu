@@ -1,0 +1,148 @@
+{# icons.html — flat inline SVG icon set.
+   Replaces every emoji and stock illustration in the Canva mockups
+   (CLAUDE.md section 5.8). No raster assets, no emoji.
+   Each macro takes a colour token name and a pixel size. #}
+
+{% macro _open(colour, size, extra) -%}
+viewBox="0 0 24 24" width="{{ size }}" height="{{ size }}"
+  fill="none" stroke="var(--c-{{ colour }})" stroke-width="2"
+  stroke-linecap="round" stroke-linejoin="round"
+  class="icon {{ extra }}" aria-hidden="true" focusable="false"
+{%- endmacro %}
+
+{% macro icon_clock(colour="blue", size=24) %}
+<svg {{ _open(colour, size, "icon--clock") }}>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M12 7v5l3 2" />
+</svg>
+{% endmacro %}
+
+{% macro icon_pin(colour="red", size=24) %}
+<svg {{ _open(colour, size, "icon--pin") }}>
+  <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z" />
+  <circle cx="12" cy="10" r="2.5" />
+</svg>
+{% endmacro %}
+
+{% macro icon_person(colour="blue", size=24) %}
+<svg {{ _open(colour, size, "icon--person") }}>
+  <circle cx="12" cy="8" r="3.5" />
+  <path d="M4.5 20a7.5 7.5 0 0 1 15 0" />
+</svg>
+{% endmacro %}
+
+{% macro icon_question(colour="yellow", size=24) %}
+<svg {{ _open(colour, size, "icon--question") }}>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M9.3 9.2a2.8 2.8 0 0 1 5.4.9c0 1.9-2.7 2.3-2.7 4" />
+  <path d="M12 17.4h.01" />
+</svg>
+{% endmacro %}
+
+{% macro icon_idea(colour="yellow", size=24) %}
+<svg {{ _open(colour, size, "icon--idea") }}>
+  <path d="M9 17.5h6" />
+  <path d="M10 21h4" />
+  <path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.7h5.4c.1-.7.4-1.3.9-1.7A6 6 0 0 0 12 3z" />
+</svg>
+{% endmacro %}
+
+{% macro icon_check(colour="green", size=24) %}
+<svg {{ _open(colour, size, "icon--check") }}>
+  <path d="M4 12.5l5 5L20 6.5" />
+</svg>
+{% endmacro %}
+
+{% macro icon_cross(colour="red", size=24) %}
+<svg {{ _open(colour, size, "icon--cross") }}>
+  <path d="M6 6l12 12M18 6L6 18" />
+</svg>
+{% endmacro %}
+
+{% macro icon_arrow(colour="blue", size=24) %}
+<svg {{ _open(colour, size, "icon--arrow") }}>
+  <path d="M4 12h15" />
+  <path d="M13 6l6 6-6 6" />
+</svg>
+{% endmacro %}
+
+{% macro icon_arrow_left(colour="blue", size=24) %}
+<svg {{ _open(colour, size, "icon--arrow-left") }}>
+  <path d="M20 12H5" />
+  <path d="M11 6l-6 6 6 6" />
+</svg>
+{% endmacro %}
+
+{% macro icon_key(colour="green", size=24) %}
+<svg {{ _open(colour, size, "icon--key") }}>
+  <circle cx="8" cy="12" r="4" />
+  <path d="M12 12h9" />
+  <path d="M17 12v3.5" />
+  <path d="M20 12v2.5" />
+</svg>
+{% endmacro %}
+
+{% macro icon_folder(colour="blue", size=24) %}
+<svg {{ _open(colour, size, "icon--folder") }}>
+  <path d="M3 7.5A1.5 1.5 0 0 1 4.5 6h4l2 2.5h7A1.5 1.5 0 0 1 19 10v7.5A1.5 1.5 0 0 1 17.5 19h-13A1.5 1.5 0 0 1 3 17.5z" />
+</svg>
+{% endmacro %}
+
+{% macro icon_heart(colour="red", size=18) %}
+<svg {{ _open(colour, size, "icon--heart") }}>
+  <path d="M12 19.5l-6.6-6.3a3.9 3.9 0 0 1 5.5-5.5l1.1 1 1.1-1a3.9 3.9 0 0 1 5.5 5.5z" />
+</svg>
+{% endmacro %}
+
+{% macro icon_send(colour="red", size=20) %}
+<svg viewBox="0 0 24 24" width="{{ size }}" height="{{ size }}"
+  fill="none" stroke="currentColor" stroke-width="2"
+  stroke-linecap="round" stroke-linejoin="round"
+  class="icon icon--send" aria-hidden="true" focusable="false">
+  <path d="M4 12h15" />
+  <path d="M13 6l6 6-6 6" />
+</svg>
+{% endmacro %}
+
+{% macro icon_menu(colour="navy", size=24) %}
+<svg viewBox="0 0 24 24" width="{{ size }}" height="{{ size }}"
+  fill="none" stroke="currentColor" stroke-width="2"
+  stroke-linecap="round" class="icon icon--menu" aria-hidden="true" focusable="false">
+  <path d="M4 7h16M4 12h16M4 17h16" />
+</svg>
+{% endmacro %}
+
+{% macro icon_user(colour="navy", size=24) %}
+<svg viewBox="0 0 24 24" width="{{ size }}" height="{{ size }}"
+  fill="none" stroke="currentColor" stroke-width="2"
+  stroke-linecap="round" stroke-linejoin="round"
+  class="icon icon--user" aria-hidden="true" focusable="false">
+  <circle cx="12" cy="8" r="3.5" />
+  <path d="M4.5 20a7.5 7.5 0 0 1 15 0" />
+</svg>
+{% endmacro %}
+
+{# A purely decorative four-dot rule in the logo palette. Carries red, blue,
+   yellow and green onto sparse screens so every page shows all four colours
+   (CLAUDE.md section 5.4). Artwork only: it holds no text. #}
+{% macro palette_marks(size=14) %}
+<svg viewBox="0 0 76 16" width="{{ size * 5 }}" height="{{ size }}"
+  class="icon icon--palette" aria-hidden="true" focusable="false">
+  <circle cx="8" cy="8" r="7" fill="var(--c-red)" />
+  <circle cx="28" cy="8" r="7" fill="var(--c-blue)" />
+  <circle cx="48" cy="8" r="7" fill="var(--c-yellow)" />
+  <circle cx="68" cy="8" r="7" fill="var(--c-green)" />
+</svg>
+{% endmacro %}
+
+{# The fixed ● LIVE corner badge (CLAUDE.md section 5.6). Inline SVG dot +
+   outlined wordmark, never an image file. `label` is authored copy. #}
+{% macro live_badge(label) %}
+<div class="live-badge">
+  <svg viewBox="0 0 12 12" width="10" height="10" class="icon"
+    aria-hidden="true" focusable="false">
+    <circle cx="6" cy="6" r="5" fill="var(--c-red)" />
+  </svg>
+  <span>{{ label }}</span>
+</div>
+{% endmacro %}

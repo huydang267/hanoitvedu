@@ -1,0 +1,99 @@
+{# Screen 16 — AI Work Forum.
+   Post bodies come from the database. Jinja autoescape handles them; nothing
+   user-typed is marked safe anywhere on this page. #}
+{% extends "base.html" %}
+{% import "macros/boxes.html" as box %}
+{% import "macros/icons.html" as ic %}
+{% block title %}{{ page.heading }} · {{ site().name }}{% endblock %}
+
+{% block content %}
+<div class="page">
+  <div class="forum__layout">
+    <aside class="forum__sidebar">
+      {{ box.heading_box(page.tab_label, "red", "sm", true) }}
+
+      <nav aria-labelledby="channels-label">
+        <p class="forum__section-label" id="channels-label">{{ page.channels_label }}</p>
+        <ul class="channel-list">
+          {% for channel in channels %}
+          <li>
+            <a class="channel-list__link{% if channel.slug == current_channel.slug %} channel-list__link--active{% endif %}"
+               href="{{ url_for('forum.channel', channel=channel.slug) }}"
+               {% if channel.slug == current_channel.slug %}aria-current="page"{% endif %}>{{ channel.label }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
+
+      <section aria-labelledby="online-label">
+        <p class="forum__section-label" id="online-label">
+          {{ ic.icon_person("yellow", 18) }}{{ page.online_label }}
+        </p>
+        <ul class="people">
+          {% for person in page.online %}
+          <li class="people__person">
+            <span class="avatar" data-accent="{{ person.accent }}">{{ ic.icon_user() }}</span>
+            <span>{{ person.name }}</span>
+          </li>
+          {% endfor %}
+          <li class="people__person">
+            <span class="people__overflow">{{ page.online_overflow }}</span>
+          </li>
+        </ul>
+      </section>
+    </aside>
+
+    <div>
+      <header class="forum__head">
+        <div class="forum__head-text">
+          <h1 class="page__title">{{ page.heading }}</h1>
+          <p class="page__subtitle">{{ page.lead }}</p>
+        </div>
+        <a class="btn" href="#composer">{{ page.new_post_label }}</a>
+      </header>
+
+      {% if error == "empty" %}
+      <p class="form-error" role="alert">A name and a message are both required.</p>
+      {% elif error == "too_long" %}
+      <p class="form-error" role="alert">That message is too long to post.</p>
+      {% endif %}
+
+      <ul class="post-list">
+        {% for post in posts %}
+        <li class="post" data-accent="{{ post.accent }}">
+          <span class="avatar" data-accent="{{ post.accent }}">{{ ic.icon_user() }}</span>
+          <div>
+            <div class="post__head">
+              <span class="post__author">{{ post.author }}</span>
+              {% if post.when_label %}
+              <span class="post__when">{{ post.when_label }}</span>
+              {% endif %}
+            </div>
+            <p class="post__body">{{ post.body }}</p>
+            <div class="post__meta">
+              <span class="post__likes">{{ ic.icon_heart("red", 18) }}{{ post.likes }}</span>
+              <span class="post__reply">{{ page.reply_label }}</span>
+            </div>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <form class="composer" id="composer" method="post"
+            action="{{ url_for('forum.post') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="channel" value="{{ current_channel.slug }}">
+        <input class="composer__input" type="text" name="author"
+               maxlength="60" required aria-label="Your name">
+        <textarea class="composer__textarea" name="body" rows="1"
+                  maxlength="2000" required
+                  aria-label="{{ page.composer_placeholder }}"
+                  placeholder="{{ page.composer_placeholder }}"></textarea>
+        <button class="composer__send" type="submit" aria-label="Send message">
+          {{ ic.icon_send() }}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

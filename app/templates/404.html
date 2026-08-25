@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Page not found · {{ site().name }}{% endblock %}
+
+{% block content %}
+<div class="error-page">
+  <span class="error-page__code">404</span>
+  <p class="page__title">Page not found</p>
+  <a class="btn btn--blue" href="{{ url_for('overview.home') }}">Back to {{ site().name }}</a>
+</div>
+{% endblock %}

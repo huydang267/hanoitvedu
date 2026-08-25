@@ -1,0 +1,19 @@
+{# A screen the design implies but content.json has no copy for.
+   It renders the one authored string that does exist — the entry's label — and
+   nothing else. Writing placeholder copy here would be a content change
+   (CLAUDE.md 6.4), so the page stays empty until the author supplies it. #}
+{% extends "base.html" %}
+{% import "macros/icons.html" as ic %}
+{% block title %}{{ label }} · {{ site().name }}{% endblock %}
+
+{% block content %}
+<div class="page awaiting">
+  <header class="page__header">
+    <h1 class="page__title">{{ label }}</h1>
+  </header>
+  {{ ic.palette_marks() }}
+  <a class="btn btn--ghost" href="{{ url_for('overview.home') }}">
+    {{ ic.icon_arrow_left("blue", 20) }}{{ site().wordmark }}
+  </a>
+</div>
+{% endblock %}

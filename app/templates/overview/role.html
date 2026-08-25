@@ -1,0 +1,36 @@
+{# Screen 4 — one role, its skill areas.
+   A skill with `module: null` has no module behind it and renders disabled. #}
+{% extends "base.html" %}
+{% import "macros/icons.html" as ic %}
+{% block title %}{{ page.heading }} · {{ site().name }}{% endblock %}
+
+{% block content %}
+<div class="page">
+  <header class="page__header">
+    <h1 class="page__title">{{ page.heading }}</h1>
+  </header>
+
+  {# Row fills come from content.json; the icons cycle the palette so the
+     screen carries all four logo colours (CLAUDE.md 5.4). #}
+  {% set palette = ["red", "blue", "green", "yellow"] %}
+  <nav class="stack" aria-label="{{ page.heading }}">
+    {% for skill in page.skills %}
+    {% set mark = palette[loop.index0 % palette|length] %}
+    {% if skill.module %}
+    <a class="skill-row" data-accent="{{ skill.accent }}"
+       href="{{ url_for('learn.module', module=skill.module) }}">
+      {{ ic.icon_folder(mark, 26) }}
+      <span>{{ skill.label }}</span>
+      <span class="skill-row__arrow">{{ ic.icon_arrow("blue", 24) }}</span>
+    </a>
+    {% else %}
+    <span class="skill-row skill-row--disabled" aria-disabled="true">
+      {{ ic.icon_folder(mark, 26) }}
+      <span>{{ skill.label }}</span>
+      <span class="skill-row__arrow">{{ ic.icon_arrow("blue", 24) }}</span>
+    </span>
+    {% endif %}
+    {% endfor %}
+  </nav>
+</div>
+{% endblock %}

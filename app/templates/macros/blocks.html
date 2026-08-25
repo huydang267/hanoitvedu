@@ -1,0 +1,276 @@
+{# blocks.html — one macro per `type` found in content.json blocks[], plus a
+   single dispatcher. Lesson pages call render_block() in a loop; no template
+   ever special-cases a particular page. #}
+
+{% import "macros/icons.html" as ic %}
+
+{# ------------------------------------------------------------ dispatcher #}
+{% macro render_block(block) %}
+{% if block.type == "example_pair" %}{{ example_pair(block) }}
+{% elif block.type == "prompt" %}{{ prompt(block) }}
+{% elif block.type == "prompt_compare" %}{{ prompt_compare(block) }}
+{% elif block.type == "table" %}{{ table(block) }}
+{% elif block.type == "list_panel" %}{{ list_panel(block) }}
+{% elif block.type == "note" %}{{ note(block) }}
+{% elif block.type == "question_to_keywords" %}{{ question_to_keywords(block) }}
+{% elif block.type == "status_table" %}{{ status_table(block) }}
+{% elif block.type == "side_note" %}{{ side_note(block) }}
+{% elif block.type == "numbered_rows" %}{{ numbered_rows(block) }}
+{% elif block.type == "flow_steps" %}{{ flow_steps(block) }}
+{% elif block.type == "important_panel" %}{{ important_panel(block) }}
+{% elif block.type == "checklist" %}{{ checklist(block) }}
+{% elif block.type == "skill_unlocked" %}{{ skill_unlocked(block) }}
+{% elif block.type == "warning" %}{{ warning(block) }}
+{% elif block.type == "next_up" %}{{ next_up(block) }}
+{% elif block.type == "lang_badges" %}{{ lang_badges(block) }}
+{% endif %}
+{% endmacro %}
+
+{# --------------------------------------------------------- example_pair #}
+{% macro example_pair(block) %}
+<div class="block example-pair body-box" data-accent="{{ block.accent or 'blue' }}">
+  <p class="body-box__title">{{ block.label }}</p>
+  <div class="example-pair__items">
+    {% for item in block['items'] %}
+    <p class="example-pair__item">
+      <span class="example-pair__label">{{ item.label }}</span>
+      <span class="example-pair__text">{{ item.text }}</span>
+    </p>
+    {% endfor %}
+  </div>
+</div>
+{% endmacro %}
+
+{# ---------------------------------------------------------------- prompt #}
+{% macro prompt(block) %}
+<div class="block prompt body-box" data-accent="{{ block.accent or 'yellow' }}">
+  <span class="prompt__label">{{ block.label }}</span>
+  <p class="prompt__text">{{ block.text }}</p>
+</div>
+{% endmacro %}
+
+{# -------------------------------------------------------- prompt_compare #}
+{% macro prompt_compare(block) %}
+<div class="block prompt-compare">
+  <div class="prompt-compare__side prompt-compare__side--bad body-box" data-accent="red">
+    <span class="prompt-compare__label">{{ block.bad.label }}</span>
+    <p class="prompt-compare__text">{{ block.bad.text }}</p>
+  </div>
+  <div class="prompt-compare__side prompt-compare__side--good body-box" data-accent="green">
+    <span class="prompt-compare__label">{{ block.good.label }}</span>
+    <p class="prompt-compare__text">{{ block.good.text }}</p>
+  </div>
+</div>
+{% endmacro %}
+
+{# ----------------------------------------------------------------- table #}
+{% macro table(block) %}
+<div class="block">
+  {% if block.caption %}
+  <p class="data-table__caption">{{ block.caption }}</p>
+  {% endif %}
+  <div class="data-table__scroll">
+    <table class="data-table">
+      <thead>
+        <tr>
+          {% for column in block.columns %}
+          <th scope="col">{{ column }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in block.rows %}
+        <tr data-accent="{{ row.accent or 'blue' }}">
+          {% for cell in row.cells %}
+          <td>{{ cell }}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endmacro %}
+
+{# ------------------------------------------------------------ list_panel #}
+{% macro list_panel(block) %}
+<div class="block list-panel">
+  {% if block.title %}
+  <p class="list-panel__title">{{ block.title }}</p>
+  {% endif %}
+  <ul class="list-panel__rows">
+    {% for row in block.rows %}
+    <li class="list-panel__row" data-accent="{{ row.accent or 'blue' }}">
+      <span class="list-panel__term">{{ row.term }}</span>
+      <span class="list-panel__text">{{ row.text }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endmacro %}
+
+{# ------------------------------------------------------------------ note #}
+{% macro note(block) %}
+<div class="block note" data-accent="{{ block.accent or 'blue' }}">
+  {{ ic.icon_pin(block.accent or "blue", 22) }}
+  <p class="note__text">{{ block.text }}</p>
+</div>
+{% endmacro %}
+
+{# --------------------------------------------- question_to_keywords (q2k) #}
+{% macro question_to_keywords(block) %}
+<div class="block q2k">
+  <div class="q2k__side q2k__side--question">
+    <span class="q2k__label">{{ block.question_label }}</span>
+    <p class="q2k__question">{{ block.question }}</p>
+  </div>
+  <span class="q2k__arrow">{{ ic.icon_arrow("yellow", 28) }}</span>
+  <div class="q2k__side q2k__side--keywords">
+    <span class="q2k__label">{{ block.keywords_label }}</span>
+    <ul class="q2k__keywords">
+      {% for keyword in block.keywords %}
+      <li class="q2k__keyword">{{ keyword }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endmacro %}
+
+{# ---------------------------------------------------------- status_table #}
+{% macro status_table(block) %}
+<div class="block status-table">
+  {% if block.title %}
+  <p class="status-table__title">{{ block.title }}</p>
+  {% endif %}
+  <ul class="status-table__rows">
+    {% for row in block.rows %}
+    <li class="status-row status-row--{{ row.state }}">
+      {% if row.state == "known" %}{{ ic.icon_check("green", 20) }}
+      {% else %}{{ ic.icon_cross("red", 20) }}
+      {% endif %}
+      <span class="status-row__label">{{ row.label }}</span>
+      <span class="status-row__text">{{ row.text }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endmacro %}
+
+{# ------------------------------------------------------------- side_note #}
+{% macro side_note(block) %}
+<div class="block body-box" data-accent="{{ block.accent or 'purple' }}">
+  {% if block.title %}
+  <p class="side-note__title">{{ ic.icon_folder(block.accent or "blue", 20) }}{{ block.title }}</p>
+  {% endif %}
+  <p class="side-note__text">{{ block.text }}</p>
+</div>
+{% endmacro %}
+
+{# --------------------------------------------------------- numbered_rows #}
+{% macro numbered_rows(block) %}
+<ul class="block numbered-rows">
+  {% for row in block.rows %}
+  <li class="numbered-row" data-accent="{{ row.accent or 'blue' }}">
+    <span class="chip-n" data-accent="{{ row.accent or 'blue' }}">{{ row.n }}</span>
+    <div>
+      <p class="numbered-row__title">{{ row.title }}</p>
+      <p class="numbered-row__text">{{ row.text }}</p>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{% endmacro %}
+
+{# ------------------------------------------------------------ flow_steps #}
+{% macro flow_steps(block) %}
+<ol class="block flow-steps">
+  {% for step in block.steps %}
+  <li class="flow-step" data-accent="{{ step.accent or 'blue' }}">
+    <span class="flow-step__n">{{ step.n }}</span>
+    <span class="flow-step__label">{{ step.label }}</span>
+    <p class="flow-step__text">{{ step.text }}</p>
+  </li>
+  {% endfor %}
+</ol>
+{% endmacro %}
+
+{# ------------------------------------------------------- important_panel #}
+{% macro important_panel(block) %}
+<div class="block important">
+  <span class="important__label">{{ block.label }}</span>
+  <p class="important__title">{{ block.title }}</p>
+  <p class="important__text">{{ block.text }}</p>
+  {% if block.warn_label %}
+  <p class="important__warn-label">{{ block.warn_label }}</p>
+  <ul class="important__warnings">
+    {% for item in block.warnings %}
+    <li class="important__warning">{{ ic.icon_cross("red", 18) }}{{ item }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% if block.chain %}
+  <p class="chain--text">{{ block.chain }}</p>
+  {% endif %}
+  <p class="important__note">{{ block.note }}</p>
+  <p class="important__emphasis">{{ block.emphasis }}</p>
+</div>
+{% endmacro %}
+
+{# ------------------------------------------------------------- checklist #}
+{% macro checklist(block) %}
+<div class="block checklist">
+  {% if block.title %}
+  <p class="checklist__title">{{ block.title }}</p>
+  {% endif %}
+  <ul class="checklist__items">
+    {% for item in block['items'] %}
+    <li class="checklist__item">{{ item }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endmacro %}
+
+{# --------------------------------------------------------- skill_unlocked #}
+{% macro skill_unlocked(block) %}
+<div class="block skill-unlocked" data-accent="{{ block.accent or 'green' }}">
+  <p class="skill-unlocked__label">{{ ic.icon_key("green", 20) }}{{ block.label }}</p>
+  <p class="skill-unlocked__title">{{ block.title }}</p>
+  <p class="skill-unlocked__banner">{{ block.banner }}</p>
+  {% if block.chain %}
+  <ul class="chain">
+    {% for link in block.chain %}
+    <li class="chain__item">{{ link }}</li>
+    {% if not loop.last %}
+    <li class="chain__arrow" aria-hidden="true">{{ ic.icon_arrow("yellow", 20) }}</li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+  <p class="skill-unlocked__text">{{ block.text }}</p>
+</div>
+{% endmacro %}
+
+{# --------------------------------------------------------------- warning #}
+{% macro warning(block) %}
+<div class="block warning">
+  {{ ic.icon_cross("red", 22) }}
+  <p class="warning__text">{{ block.text }}</p>
+</div>
+{% endmacro %}
+
+{# --------------------------------------------------------------- next_up #}
+{% macro next_up(block) %}
+<div class="block next-up">
+  <p class="next-up__title">{{ ic.icon_arrow("blue", 22) }}{{ block.title }}</p>
+  <p class="next-up__text">{{ block.text }}</p>
+</div>
+{% endmacro %}
+
+{# ----------------------------------------------------------- lang_badges #}
+{% macro lang_badges(block) %}
+<ul class="block lang-badges">
+  {% for badge in block.decor %}
+  <li class="lang-badges__badge">{{ badge }}</li>
+  {% endfor %}
+</ul>
+{% endmacro %}

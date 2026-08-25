@@ -1,0 +1,73 @@
+{# Screens 6-12 — ONE template for every lesson step, driven by the lesson dict.
+   Adding a lesson to content.json adds a page; no template change needed. #}
+{% extends "base.html" %}
+{% import "macros/boxes.html" as box %}
+{% import "macros/blocks.html" as blk %}
+{% import "macros/icons.html" as ic %}
+{% block title %}{{ lesson.title }} · {{ site().name }}{% endblock %}
+
+{% block content %}
+<div class="page">
+  <header class="lesson__head">
+    {{ box.step_badge(lesson.number) }}
+    <h1 class="lesson__title">{{ lesson.title }}</h1>
+  </header>
+
+  {% if lesson.lead %}
+  <div class="body-box" data-accent="{{ lesson.lead.accent }}">
+    {% if lesson.lead.title %}
+    <p class="lesson__lead-title">{{ lesson.lead.title }}</p>
+    {% endif %}
+    {% if lesson.lead.text %}
+    <p class="lesson__lead-text">{{ lesson.lead.text }}</p>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% if lesson.tip or lesson.key_idea %}
+  <div class="split">
+    <div>
+      {% for block in lesson.blocks %}{{ blk.render_block(block) }}{% endfor %}
+    </div>
+    <aside class="lesson__rail">
+      {{ box.tip_box(lesson.tip) }}
+      {{ box.key_idea(lesson.key_idea) }}
+    </aside>
+  </div>
+  {% else %}
+  <div>
+    {% for block in lesson.blocks %}{{ blk.render_block(block) }}{% endfor %}
+  </div>
+  {% endif %}
+
+  <nav class="lesson__nav" aria-label="{{ module.title }}">
+    {% if previous %}
+    <a class="lesson__nav-link lesson__nav-link--prev"
+       href="{{ url_for('learn.lesson', module=slug, step=previous.slug) }}">
+      {{ ic.icon_arrow_left("blue", 20) }}
+      <span>{{ previous.title }}</span>
+    </a>
+    {% else %}
+    <a class="lesson__nav-link lesson__nav-link--prev"
+       href="{{ url_for('learn.module', module=slug) }}">
+      {{ ic.icon_arrow_left("blue", 20) }}
+      <span>{{ module.title }}</span>
+    </a>
+    {% endif %}
+
+    {% if following %}
+    <a class="lesson__nav-link lesson__nav-link--next"
+       href="{{ url_for('learn.lesson', module=slug, step=following.slug) }}">
+      <span>{{ following.title }}</span>
+      {{ ic.icon_arrow("blue", 20) }}
+    </a>
+    {% elif module.practice %}
+    <a class="lesson__nav-link lesson__nav-link--next"
+       href="{{ url_for('practice.practice', module=slug) }}">
+      <span>{{ module.practice.title }}</span>
+      {{ ic.icon_arrow("blue", 20) }}
+    </a>
+    {% endif %}
+  </nav>
+</div>
+{% endblock %}

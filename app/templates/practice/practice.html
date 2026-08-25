@@ -1,0 +1,65 @@
+{# Screen 13 — 07 Quick practice #}
+{% extends "base.html" %}
+{% import "macros/boxes.html" as box %}
+{% import "macros/icons.html" as ic %}
+{% block title %}{{ practice.title }} · {{ site().name }}{% endblock %}
+
+{% block content %}
+<div class="page">
+  <header class="lesson__head">
+    {{ box.step_badge(practice.number) }}
+    <h1 class="lesson__title">{{ practice.title }}</h1>
+  </header>
+
+  {% if practice.lead %}
+  <div class="body-box" data-accent="{{ practice.lead.accent }}">
+    <p class="lesson__lead-title">{{ practice.lead.title }}</p>
+  </div>
+  {% endif %}
+
+  <div class="split">
+    <section class="body-box" data-accent="{{ practice.your_turn.accent }}">
+      {{ box.heading_box(practice.your_turn.label, practice.your_turn.accent, "sm") }}
+      <p class="your-turn__intro">{{ practice.your_turn.intro }}</p>
+      <ul class="your-turn__steps">
+        {% for step in practice.your_turn.steps %}
+        <li class="your-turn__step">{{ step }}</li>
+        {% endfor %}
+      </ul>
+
+      <div class="fallback">
+        <p class="fallback__title">{{ practice.your_turn.fallback.title }}</p>
+        <ul class="fallback__items">
+          {% for item in practice.your_turn.fallback['items'] %}
+          <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </section>
+
+    <div class="stack">
+      <section class="body-box" data-accent="{{ practice.copy_prompt.accent }}">
+        <p class="prompt__label">{{ practice.copy_prompt.label }}</p>
+        <p class="prompt__text">{{ practice.copy_prompt.text }}</p>
+      </section>
+
+      <section class="body-box" data-accent="{{ practice.follow_up.accent }}">
+        <p class="prompt__label">{{ practice.follow_up.label }}</p>
+        <p class="lesson__lead-text">{{ practice.follow_up.hint }}</p>
+        <p class="prompt__text">{{ practice.follow_up.text }}</p>
+      </section>
+
+      <div class="practice-submit" data-accent="{{ practice.submit.accent }}">
+        {% if has_quiz %}
+        <a class="btn" href="{{ url_for('practice.quiz', module=slug) }}">
+          {{ practice.submit.label }}{{ ic.icon_arrow("yellow", 20) }}
+        </a>
+        {% else %}
+        <span class="btn" aria-disabled="true">{{ practice.submit.label }}</span>
+        {% endif %}
+        <p class="tip-box__text">{{ practice.submit.text }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

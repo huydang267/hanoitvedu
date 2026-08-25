@@ -1,0 +1,24 @@
+{# PRACTICE index — landing point for the nav section. #}
+{% extends "base.html" %}
+{% import "macros/icons.html" as ic %}
+{% block title %}{{ nav_items()[2].label }} · {{ site().name }}{% endblock %}
+
+{% block content %}
+<div class="page">
+  <header class="page__header">
+    <h1 class="page__title">{{ nav_items()[2].label }}</h1>
+  </header>
+  {{ ic.palette_marks() }}
+
+  <nav class="grid-3" aria-label="{{ nav_items()[2].label }}">
+    {% for slug, module in modules %}
+    <a class="entry-card" data-accent="green"
+       href="{{ url_for('practice.practice', module=slug) }}">
+      <span class="entry-card__icon">{{ ic.icon_check("red", 34) }}</span>
+      <span>{{ module.title }}</span>
+      <span>{{ module.practice.title }}</span>
+    </a>
+    {% endfor %}
+  </nav>
+</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{# boxes.html — the five box components from CLAUDE.md section 5.5.
+   Body text never sits directly on the white card: it always sits in a box. #}
+
+{% import "macros/icons.html" as ic %}
+
+{# heading_box — solid logo colour, white League Spartan #}
+{% macro heading_box(text, colour="blue", size="", block=false) %}
+<span class="heading-box{% if size %} heading-box--{{ size }}{% endif %}{% if block %} heading-box--block{% endif %}"
+      data-accent="{{ colour }}">{{ text }}</span>
+{% endmacro %}
+
+{# body_box — pastel fill of the same colour, 2px matching border #}
+{% macro body_box(colour="green", title=none) %}
+<div class="body-box" data-accent="{{ colour }}">
+  {% if title %}
+  <p class="body-box__title">{{ title }}</p>
+  {% endif %}
+  {{ caller() }}
+</div>
+{% endmacro %}
+
+{# body_box_paragraphs — the common case: a list of paragraphs #}
+{% macro body_box_paragraphs(paragraphs, colour="green", title=none) %}
+<div class="body-box" data-accent="{{ colour }}">
+  {% if title %}
+  <p class="body-box__title">{{ title }}</p>
+  {% endif %}
+  {% for paragraph in paragraphs %}
+  <p>{{ paragraph }}</p>
+  {% endfor %}
+</div>
+{% endmacro %}
+
+{# key_idea — red solid tab over a pastel-red panel #}
+{% macro key_idea(idea) %}
+{% if idea %}
+<div class="key-idea">
+  <span class="key-idea__tab">{{ idea.label }}</span>
+  <p class="key-idea__panel">{{ idea.text }}</p>
+</div>
+{% endif %}
+{% endmacro %}
+
+{# tip_box — pastel green, green rule, lightbulb icon #}
+{% macro tip_box(tip) %}
+{% if tip %}
+<div class="tip-box">
+  <p class="tip-box__label">{{ ic.icon_idea("green", 20) }}{{ tip.label }}</p>
+  <p class="tip-box__text">{{ tip.text }}</p>
+</div>
+{% endif %}
+{% endmacro %}
+
+{# step_badge — the red arrow chip 01..07 #}
+{% macro step_badge(n) %}
+{% if n %}
+<span class="step-badge">{{ n }}</span>
+{% endif %}
+{% endmacro %}

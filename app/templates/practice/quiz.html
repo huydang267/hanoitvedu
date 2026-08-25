@@ -1,0 +1,74 @@
+{# Screen 14 — Quick check, 3 MCQ.
+   `quiz` arrives with every `answer` key stripped, so the correct option is not
+   present in this markup. Correct/incorrect classes appear only in `results`,
+   which is populated by a POST. #}
+{% extends "base.html" %}
+{% import "macros/boxes.html" as box %}
+{% import "macros/icons.html" as ic %}
+{% block title %}{{ quiz.title }} · {{ site().name }}{% endblock %}
+
+{% block content %}
+<div class="page">
+  <header class="lesson__head">
+    {{ box.step_badge(quiz.number) }}
+    <h1 class="lesson__title">{{ quiz.title }}</h1>
+  </header>
+
+  <div class="body-box" data-accent="yellow">
+    <p class="quiz__banner">{{ quiz.banner }}</p>
+  </div>
+
+  <form class="stack" method="post" data-quiz
+        action="{{ url_for('practice.quiz', module=slug) }}"
+        data-check-url="{{ url_for('practice.quiz_check', module=slug) }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+    <ul class="quiz__questions">
+      {% for question in quiz.questions %}
+      {% set result = results.get(question.id) %}
+      <li class="quiz-q" data-question="{{ question.id }}">
+        <div class="quiz-q__prompt">
+          <span class="quiz-q__id">{{ question.id }}</span>
+          <p class="quiz-q__text" id="q-{{ loop.index }}">{{ question.text }}</p>
+        </div>
+
+        <div class="quiz-q__options" role="radiogroup" aria-labelledby="q-{{ loop.index }}">
+          {% for option in question.options %}
+          {% set is_answer = result and result.answer == option.key %}
+          {% set is_wrong = result and result.chosen == option.key and not result.correct %}
+          <label class="quiz-option{% if is_answer %} quiz-option--correct{% elif is_wrong %} quiz-option--incorrect{% endif %}"
+                 data-option="{{ option.key }}">
+            <input class="quiz-option__input" type="radio"
+                   name="{{ question.id }}" value="{{ option.key }}"
+                   {% if result and result.chosen == option.key %}checked{% endif %}>
+            <span class="quiz-option__key">{{ option.key }}</span>
+            <span>{{ option.text }}</span>
+            <span class="quiz-option__mark">
+              {% if is_answer %}{{ ic.icon_check("green", 20) }}
+              {% elif is_wrong %}{{ ic.icon_cross("red", 20) }}
+              {% endif %}
+            </span>
+          </label>
+          {% endfor %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% if score is not none %}
+    <p class="quiz__result" data-quiz-score>{{ score }} / {{ total }}</p>
+    {% else %}
+    <p class="quiz__result" data-quiz-score hidden></p>
+    {% endif %}
+
+    <div>
+      <button class="btn" type="submit">{{ quiz.title }}</button>
+    </div>
+  </form>
+
+  <footer class="quiz__footer" data-accent="green">
+    <span class="quiz__footer-label">{{ quiz.footer.label }}</span>
+    <p class="quiz__footer-text">{{ quiz.footer.text }}</p>
+  </footer>
+</div>
+{% endblock %}

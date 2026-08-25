@@ -1,0 +1,49 @@
+{# Screen 15 — Notebook, prompt library #}
+{% extends "base.html" %}
+{% import "macros/boxes.html" as box %}
+{% import "macros/icons.html" as ic %}
+{% block title %}{{ page.heading }} · {{ site().name }}{% endblock %}
+
+{% block content %}
+<div class="page">
+  <div class="notebook__layout">
+    <aside class="notebook__sidebar">
+      {{ box.heading_box(page.tab_label, "red", "sm", true) }}
+      {{ box.heading_box(page.sidebar_label, "blue", "sm", true) }}
+    </aside>
+
+    <div class="stack">
+      <header class="page__header">
+        <div>
+          <h1 class="page__title">{{ page.heading }}</h1>
+          <p class="page__subtitle">{{ page.lead }}</p>
+        </div>
+      </header>
+
+      <div class="grid-3">
+        {% for card in page.cards %}
+        <article class="prompt-card" data-accent="{{ card.accent }}">
+          <h2 class="prompt-card__title">
+            {{ ic.icon_folder(card.accent, 22) }}{{ card.title }}
+          </h2>
+          <p class="prompt-card__text" id="prompt-{{ loop.index }}">{{ card.prompt }}</p>
+          {# The prompt is already readable and selectable above, so this button
+             is an enhancement: JS reveals it and wires it to the clipboard. With
+             JS off it stays hidden and nothing is lost. #}
+          <button class="btn btn--ghost prompt-card__action" type="button"
+                  data-copy="prompt-{{ loop.index }}" hidden>{{ card.action }}</button>
+        </article>
+        {% endfor %}
+      </div>
+
+      <section class="why-panel" data-accent="yellow">
+        <span class="entry-card__icon">{{ ic.icon_idea("red", 40) }}</span>
+        <div>
+          <h2 class="why-panel__title">{{ page.why.title }}</h2>
+          <p class="why-panel__text">{{ page.why.text }}</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+{% endblock %}

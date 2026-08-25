@@ -1,0 +1,58 @@
+{# Screen 5 — module overview + "What you will learn" #}
+{% extends "base.html" %}
+{% import "macros/boxes.html" as box %}
+{% import "macros/icons.html" as ic %}
+{% block title %}{{ module.title }} · {{ site().name }}{% endblock %}
+
+{% block content %}
+<div class="page">
+  <header class="page__header">
+    <div>
+      <p class="page__eyebrow">{{ module.eyebrow }}</p>
+      <h1 class="page__title">{{ module.title }}</h1>
+      <p class="page__subtitle">{{ module.subtitle }}</p>
+    </div>
+  </header>
+
+  <div class="split">
+    <div class="stack">
+      {{ box.heading_box(module.overview.label, module.overview.accent, "sm") }}
+      {% call box.body_box(module.overview.accent) %}
+      <p>{{ module.overview.text }}</p>
+      {% endcall %}
+    </div>
+
+    <div class="stack">
+      {{ box.heading_box(module.what_you_will_learn.label, module.what_you_will_learn.accent, "sm") }}
+      <ul class="learn-list">
+        {% for item in module.what_you_will_learn['items'] %}
+        <li class="learn-list__item">{{ ic.icon_check("green", 20) }}<span>{{ item }}</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <nav class="module-toc" aria-label="{{ module.title }}">
+    {% for lesson in lessons %}
+    <a class="module-toc__link"
+       href="{{ url_for('learn.lesson', module=slug, step=lesson.slug) }}">
+      {% if lesson.number %}<span class="module-toc__n">{{ lesson.number }}</span>{% endif %}
+      <span>{{ lesson.title }}</span>
+    </a>
+    {% endfor %}
+    {% if module.practice %}
+    <a class="module-toc__link"
+       href="{{ url_for('practice.practice', module=slug) }}">
+      <span class="module-toc__n">{{ module.practice.number }}</span>
+      <span>{{ module.practice.title }}</span>
+    </a>
+    {% endif %}
+    {% if module.quiz %}
+    <a class="module-toc__link" href="{{ url_for('practice.quiz', module=slug) }}">
+      <span class="module-toc__n">{{ module.quiz.number }}</span>
+      <span>{{ module.quiz.title }}</span>
+    </a>
+    {% endif %}
+  </nav>
+</div>
+{% endblock %}

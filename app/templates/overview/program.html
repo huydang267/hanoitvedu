@@ -1,0 +1,35 @@
+{# Screen 3 — Our Program, 3 role cards.
+   Only EDITORIAL has copy behind it; the other two render disabled (CLAUDE.md 6.4). #}
+{% extends "base.html" %}
+{% import "macros/icons.html" as ic %}
+{% block title %}{{ page.heading }} · {{ site().name }}{% endblock %}
+
+{% block content %}
+<div class="page">
+  <header class="page__header">
+    <h1 class="page__title">{{ page.heading }}</h1>
+  </header>
+
+  {# Card fills come from content.json; the icons cycle the palette so the
+     screen carries all four logo colours (CLAUDE.md 5.4). #}
+  {% set palette = ["red", "blue", "green", "yellow"] %}
+  <nav class="grid-3" aria-label="{{ page.heading }}">
+    {% for role in page.roles %}
+    {% set has_copy = get_page('role_' ~ role.slug) is not none %}
+    {% set mark = palette[loop.index0 % palette|length] %}
+    {% if has_copy %}
+    <a class="entry-card" data-accent="{{ role.accent }}"
+       href="{{ url_for('overview.role', role=role.slug) }}">
+      <span class="entry-card__icon">{{ ic.icon_folder(mark, 34) }}</span>
+      {{ role.label }}
+    </a>
+    {% else %}
+    <span class="entry-card entry-card--disabled" aria-disabled="true">
+      <span class="entry-card__icon">{{ ic.icon_folder(mark, 34) }}</span>
+      {{ role.label }}
+    </span>
+    {% endif %}
+    {% endfor %}
+  </nav>
+</div>
+{% endblock %}

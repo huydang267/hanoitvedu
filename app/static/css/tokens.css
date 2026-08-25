@@ -1,0 +1,121 @@
+/* tokens.css — the single source of truth for colour, type, spacing and radii.
+   This is the ONLY stylesheet allowed to contain a literal hex value.
+   CLAUDE.md section 5.1. */
+
+:root {
+  /* ---- logo palette: the 4 Hanoi TV colours ---------------------------- */
+  --c-red: #da463d;
+  --c-blue: #507fbb;
+  --c-yellow: #e0c148;
+  --c-green: #60b057;
+
+  /* ---- typography colours --------------------------------------------- */
+  --heading: #e2011a; /* League Spartan headings + subheadings */
+  --body: #26318c; /* Canva Sans body text */
+  --navy: #1e2b6f; /* nav text, table headers */
+
+  /* ---- pastel fills for BODY text boxes -------------------------------- */
+  --pastel-green: #e4f4e4;
+  --pastel-green-line: #60b057;
+  --pastel-yellow: #fffbed;
+  --pastel-yellow-line: #e0c148;
+  --pastel-blue: #eaf1fa;
+  --pastel-blue-line: #507fbb;
+  --pastel-red: #fcf0ef;
+  --pastel-red-line: #da463d;
+
+  /* ---- surfaces -------------------------------------------------------- */
+  --card: #f7f9ff;
+  --white: #ffffff;
+
+  /* ---- animated background field --------------------------------------- */
+  --bg-deep: #0b1f6b;
+  --bg-mid: #1c3fa8;
+
+  /* ---- derived fifth accent --------------------------------------------
+     content.json marks six elements "purple". CLAUDE.md section 10 permits a
+     new colour only as a token derived from the existing palette, so this one
+     is mixed from two logo colours and introduces no new hex. */
+  --c-purple: color-mix(in srgb, var(--c-red) 45%, var(--c-blue) 55%);
+  --pastel-purple: color-mix(in srgb, var(--c-purple) 10%, var(--white));
+  --pastel-purple-line: var(--c-purple);
+
+  /* ---- muted state, for entries whose copy does not exist yet ---------- */
+  --muted: color-mix(in srgb, var(--navy) 42%, var(--white));
+  --muted-fill: color-mix(in srgb, var(--navy) 6%, var(--white));
+  --muted-line: color-mix(in srgb, var(--navy) 22%, var(--white));
+
+  /* ---- typography ------------------------------------------------------ */
+  --font-heading: "League Spartan", "Poppins", system-ui, sans-serif;
+  --font-body: "Canva Sans", "Poppins", "Nunito Sans", system-ui, sans-serif;
+
+  /* Minimums are sized so the longest single word on each screen still fits
+     inside the card at a 360px viewport. */
+  --fs-hero: clamp(1.85rem, 7vw, 5.5rem);
+  --fs-h1: clamp(1.4rem, 3.6vw, 3rem);
+  --fs-h2: clamp(1.05rem, 2.2vw, 1.85rem);
+  --fs-h3: clamp(1rem, 1.5vw, 1.3rem);
+  --fs-body: clamp(0.95rem, 1.05vw, 1.05rem);
+  --fs-small: clamp(0.8rem, 0.9vw, 0.9rem);
+  --fs-micro: 0.72rem;
+
+  --lh-tight: 1.15;
+  --lh-body: 1.6;
+
+  /* ---- spacing scale --------------------------------------------------- */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4rem;
+
+  /* ---- radii ----------------------------------------------------------- */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-card: 28px;
+  --r-pill: 999px;
+
+  /* ---- elevation ------------------------------------------------------- */
+  --shadow-card: 0 24px 60px rgb(0 0 0 / 0.28);
+  --shadow-nav: 0 10px 30px rgb(0 0 0 / 0.22);
+  --shadow-soft: 0 4px 14px rgb(0 0 0 / 0.08);
+
+  /* ---- layout ---------------------------------------------------------- */
+  --card-w: min(1600px, 94vw);
+  --card-gap: clamp(12px, 2.5vh, 40px);
+  --bar-h: clamp(40px, 9vh, 120px);
+  --nav-h: 68px;
+  --focus-ring: 3px solid var(--c-blue);
+}
+
+/* Accent lookup: every component that takes an accent name resolves it here,
+   so no component stylesheet ever needs to know a colour value. */
+[data-accent="red"] {
+  --accent: var(--c-red);
+  --accent-fill: var(--pastel-red);
+  --accent-line: var(--pastel-red-line);
+}
+[data-accent="blue"] {
+  --accent: var(--c-blue);
+  --accent-fill: var(--pastel-blue);
+  --accent-line: var(--pastel-blue-line);
+}
+[data-accent="yellow"] {
+  --accent: var(--c-yellow);
+  --accent-fill: var(--pastel-yellow);
+  --accent-line: var(--pastel-yellow-line);
+}
+[data-accent="green"] {
+  --accent: var(--c-green);
+  --accent-fill: var(--pastel-green);
+  --accent-line: var(--pastel-green-line);
+}
+[data-accent="purple"] {
+  --accent: var(--c-purple);
+  --accent-fill: var(--pastel-purple);
+  --accent-line: var(--pastel-purple-line);
+}

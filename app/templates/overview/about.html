@@ -1,0 +1,25 @@
+{# Screen 2 — About Us #}
+{% extends "base.html" %}
+{% import "macros/boxes.html" as box %}
+{% import "macros/icons.html" as ic %}
+{% block title %}{{ page.heading }} · {{ site().name }}{% endblock %}
+
+{% block content %}
+<div class="page">
+  <header class="page__header">
+    {{ box.step_badge(none) }}
+    <h1 class="page__title">{{ page.heading }}</h1>
+  </header>
+
+  {{ box.body_box_paragraphs(page.body_box.paragraphs, page.body_box.accent) }}
+
+  <div class="split">
+    <p class="heading-box heading-box--block heading-box--lg"
+       data-accent="{{ page.callout.accent }}">{{ page.callout.text }}</p>
+    <div class="stack">
+      <span class="pill" data-accent="red">{{ ic.icon_pin("yellow", 16) }}{{ site().wordmark }}</span>
+      <span class="pill" data-accent="blue">{{ ic.icon_idea("yellow", 16) }}{{ site().logo_caption }}</span>
+    </div>
+  </div>
+</div>
+{% endblock %}
